@@ -42,7 +42,7 @@ public class BotTemplate {
                 message,
                 Arrays.asList(
                         new MessageAction(actionTitle, actionText),
-                        new MessageAction("Lihat favorite", "Lihat Favorite")
+                        new MessageAction("Lihat Favorite", "Lihat Favorite")
                 )
         );
 
@@ -52,7 +52,7 @@ public class BotTemplate {
     // greeting message
     public TemplateMessage greetingMessage(Source source, UserProfileResponse sender) {
         String message = "Hi %s! Selamat datang di Easy Movie, cari film favorit kamu yuk!";
-        String action = "Lihat daftar film";
+        String action = "Lihat Daftar Film";
 
         if (source instanceof GroupSource) {
             message = String.format(message, "sobat group ez");
@@ -73,7 +73,7 @@ public class BotTemplate {
 
         CarouselColumn column;
         List<CarouselColumn> carouselColumns = new ArrayList<>();
-        for (int i = 0; i < movies.getResults().size(); i++) {
+        for (int i = 0; i < 10; i++) { // looping untill the first 10 item, cause line carousel max item is 10.
             Movie movie = movies.getResults().get(i);
 
             image = "http://image.tmdb.org/t/p/w185" + movie.getBackdropPath();

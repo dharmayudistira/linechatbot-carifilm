@@ -64,7 +64,7 @@ public class BotTemplate {
             message = "Unknown message source!";
         }
 
-        return createGreetingButton(message, action, action);
+        return createButton(message, action, action);
     }
 
     // make a carousel movies
@@ -73,7 +73,7 @@ public class BotTemplate {
 
         CarouselColumn column;
         List<CarouselColumn> carouselColumns = new ArrayList<>();
-        for (int i = 0; i < 10; i++) { // looping untill the first 10 item, cause line carousel max item is 10.
+        for (int i = 0; i < 3; i++) { // looping untill the first 3 item
             Movie movie = movies.getResults().get(i);
 
             image = "http://image.tmdb.org/t/p/w185" + movie.getBackdropPath();

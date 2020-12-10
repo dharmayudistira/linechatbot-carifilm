@@ -197,7 +197,7 @@ public class BotController {
             ObjectMapper objectMapper = new ObjectMapper();
             movies = objectMapper.readValue(jsonResponse, Movies.class);
 
-            System.out.println("Movies: " + movies.getResults().toString());
+            System.out.println("Movies: " + movies);
         }catch (InterruptedException | ExecutionException | IOException e) {
             throw new RuntimeException(e);
         }

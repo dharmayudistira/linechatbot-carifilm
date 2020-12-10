@@ -1,5 +1,6 @@
 package com.pandeka.CariFilm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -10,6 +11,7 @@ import java.util.List;
 @JsonPropertyOrder({
         "results"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Movies {
 
     @JsonProperty("results")

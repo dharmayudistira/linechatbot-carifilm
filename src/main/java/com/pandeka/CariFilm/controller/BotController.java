@@ -143,11 +143,11 @@ public class BotController {
     }
 
     private void handlePersonalChat(String replyToken, String textMessage) {
-        String message = textMessage.toLowerCase();
+        String action = textMessage.toLowerCase();
 
-        if (message.contains("lihat daftar film")) { //check if it's from "Lihat Daftar Film" feature
+        if (action.contains("lihat daftar film")) { //check if it's from "Lihat Daftar Film" feature
             showCarouselMovies(replyToken, null);
-        }else if(message.contains("lihat favorite")) { //check if it's from "Lihat Favorite" feature
+        }else if(action.contains("lihat favorite")) { //check if it's from "Lihat Favorite" feature
 
         }else { // bot can't understand user message, so reply it with guide information
 

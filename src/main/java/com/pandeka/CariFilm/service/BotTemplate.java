@@ -14,10 +14,9 @@ import com.pandeka.CariFilm.model.Movie;
 import com.pandeka.CariFilm.model.Movies;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @Service
 public class BotTemplate {
@@ -73,13 +72,17 @@ public class BotTemplate {
 
         CarouselColumn column;
         List<CarouselColumn> carouselColumns = new ArrayList<>();
-        for (int i = 0; i < 3; i++) { // looping untill the first 3 item
+        for (int i = 0; i < 5; i++) { // looping untill the first 5 item
             Movie movie = movies.getResults().get(i);
 
             image = "https://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
-//            image = "https://dicodingacademy.blob.core.windows.net/eventimages/it_fair_se_game_dev_webinar_logo_211120232054.png";
             title = movie.getTitle();
-            releaseDate = movie.getReleaseDate();
+
+            // formatting date with "E, MMM dd yyyy" pattern
+            String rawReleaseDate = movie.getReleaseDate();
+
+            String formattedReleaseDate = new SimpleDateFormat("E, MMM dd yyyy", Locale.ENGLISH).format(rawReleaseDate);
+            releaseDate = formattedReleaseDate;
 
             column = new CarouselColumn(image, title, releaseDate,
                     Collections.singletonList(

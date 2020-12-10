@@ -77,6 +77,7 @@ public class BotTemplate {
             Movie movie = movies.getResults().get(i);
 
             image = "http://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
+            image = "http://image.tmdb.org/t/p/w780/jeAQdDX9nguP6YOX6QSWKDPkbBo.jpg";
             title = movie.getTitle();
             releaseDate = movie.getReleaseDate();
 

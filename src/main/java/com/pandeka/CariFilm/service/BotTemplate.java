@@ -76,8 +76,8 @@ public class BotTemplate {
         for (int i = 0; i < 3; i++) { // looping untill the first 3 item
             Movie movie = movies.getResults().get(i);
 
-//            image = "http://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
-            image = "https://dicodingacademy.blob.core.windows.net/eventimages/it_fair_se_game_dev_webinar_logo_211120232054.png";
+            image = "https://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
+//            image = "https://dicodingacademy.blob.core.windows.net/eventimages/it_fair_se_game_dev_webinar_logo_211120232054.png";
             title = movie.getTitle();
             releaseDate = movie.getReleaseDate();
 

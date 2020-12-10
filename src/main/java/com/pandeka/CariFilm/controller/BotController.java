@@ -183,11 +183,16 @@ public class BotController {
 
             Future<HttpResponse> future = client.execute(get, null);
             HttpResponse response = future.get();
+            System.out.println("HTTP Executed");
+            System.out.println("HTTP Status of response " + response.getStatusLine().getStatusCode());
 
             //Get the response from the GET request
             InputStream inputStream = response.getEntity().getContent();
             String encoding = StandardCharsets.UTF_8.name();
             String jsonResponse = IOUtils.toString(inputStream, encoding);
+
+            System.out.println("Got result");
+            System.out.println(jsonResponse);
 
             ObjectMapper objectMapper = new ObjectMapper();
             movies = objectMapper.readValue(jsonResponse, Movies.class);

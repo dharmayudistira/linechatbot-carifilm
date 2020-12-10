@@ -150,8 +150,13 @@ public class BotController {
         }else if(action.contains("lihat favorite")) { //check if it's from "Lihat Favorite" feature
 
         }else { // bot can't understand user message, so reply it with guide information
-
+            handleFallbackMessage(replyToken, new UserSource(sender.getUserId()));
         }
+    }
+
+    private void handleFallbackMessage(String replyToken, Source source) {
+        String unknownCommandMessage = "Hi " + sender.getDisplayName() + ", mohon maaf bot ez tidak mengerti maksud kamu. Silahkan ikuti petunjuk ya :)";
+        greetingMessage(replyToken, source, unknownCommandMessage);
     }
 
     private void showCarouselMovies(String replyToken, String additionalInfo) {

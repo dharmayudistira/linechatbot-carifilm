@@ -12,6 +12,7 @@ import com.linecorp.bot.model.message.template.CarouselTemplate;
 import com.linecorp.bot.model.profile.UserProfileResponse;
 import com.pandeka.CariFilm.model.Movie;
 import com.pandeka.CariFilm.model.Movies;
+import com.sun.org.apache.xml.internal.utils.URI;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -77,7 +78,6 @@ public class BotTemplate {
             Movie movie = movies.getResults().get(i);
 
             image = "http://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
-            image = "http://image.tmdb.org/t/p/w780/jeAQdDX9nguP6YOX6QSWKDPkbBo.jpg";
             title = movie.getTitle();
             releaseDate = movie.getReleaseDate();
 

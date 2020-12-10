@@ -155,7 +155,7 @@ public class BotController {
     }
 
     private void handleFallbackMessage(String replyToken, Source source) {
-        String unknownCommandMessage = "Hi " + sender.getDisplayName() + ", mohon maaf bot ez tidak mengerti maksud kamu. Silahkan ikuti petunjuk ya :)";
+        String unknownCommandMessage = "Hi " + sender.getDisplayName() + ", mohon maaf bot izy tidak mengerti maksud kamu. Silahkan ikuti petunjuk ya :)";
         greetingMessage(replyToken, source, unknownCommandMessage);
     }
 

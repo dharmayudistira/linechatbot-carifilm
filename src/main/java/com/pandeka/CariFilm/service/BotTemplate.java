@@ -56,9 +56,9 @@ public class BotTemplate {
         String action = "Lihat Daftar Film";
 
         if (source instanceof GroupSource) {
-            message = String.format(message, "sobat group ez");
+            message = String.format(message, "sobat group izy");
         } else if (source instanceof RoomSource) {
-            message = String.format(message, "sobat room ez");
+            message = String.format(message, "sobat room izy");
         } else if (source instanceof UserSource) {
             message = String.format(message, sender.getDisplayName());
         } else {

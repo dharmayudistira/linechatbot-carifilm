@@ -76,7 +76,7 @@ public class BotTemplate {
         for (int i = 0; i < 3; i++) { // looping untill the first 3 item
             Movie movie = movies.getResults().get(i);
 
-            image = "http://image.tmdb.org/t/p/w185" + movie.getBackdropPath();
+            image = "http://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
             title = movie.getTitle();
             releaseDate = movie.getReleaseDate();
 

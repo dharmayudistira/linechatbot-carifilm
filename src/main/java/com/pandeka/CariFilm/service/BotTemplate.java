@@ -14,10 +14,11 @@ import com.pandeka.CariFilm.model.Movie;
 import com.pandeka.CariFilm.model.Movies;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class BotTemplate {
@@ -71,8 +72,6 @@ public class BotTemplate {
     public TemplateMessage carouselMovies(Movies movies) {
         String image, title, releaseDate;
 
-        Date rawDate;
-
         CarouselColumn column;
         List<CarouselColumn> carouselColumns = new ArrayList<>();
         for (int i = 0; i < 5; i++) { // looping untill the first 5 item
@@ -80,23 +79,15 @@ public class BotTemplate {
 
             image = "https://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
             title = movie.getTitle();
+            releaseDate = "Release: " + movie.getReleaseDate();
 
-            try {
-                rawDate = new SimpleDateFormat("YYYY-MM-dd", Locale.ENGLISH).parse(movie.getBackdropPath());
-                String formattedDate = new SimpleDateFormat("MMMM d, Y", Locale.ENGLISH).format(rawDate);
+            column = new CarouselColumn(image, title, releaseDate,
+                    Collections.singletonList(
+                            new MessageAction("Add to favorite", "Menambahkan " + title + " kedalam daftar favorite anda")
+                    )
+            );
 
-                releaseDate = "Release: " + formattedDate;
-
-                column = new CarouselColumn(image, title, releaseDate,
-                        Collections.singletonList(
-                                new MessageAction("Add to favorite", "Menambahkan " + title + " kedalam daftar favorite anda")
-                        )
-                );
-
-                carouselColumns.add(column);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            carouselColumns.add(column);
         }
 
         CarouselTemplate carouselTemplate = new CarouselTemplate(carouselColumns);

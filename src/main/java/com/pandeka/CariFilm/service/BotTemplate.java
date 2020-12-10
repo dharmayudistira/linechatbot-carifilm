@@ -12,7 +12,6 @@ import com.linecorp.bot.model.message.template.CarouselTemplate;
 import com.linecorp.bot.model.profile.UserProfileResponse;
 import com.pandeka.CariFilm.model.Movie;
 import com.pandeka.CariFilm.model.Movies;
-import com.sun.org.apache.xml.internal.utils.URI;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -77,7 +76,8 @@ public class BotTemplate {
         for (int i = 0; i < 3; i++) { // looping untill the first 3 item
             Movie movie = movies.getResults().get(i);
 
-            image = "http://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
+//            image = "http://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
+            image = "https://dicodingacademy.blob.core.windows.net/eventimages/it_fair_se_game_dev_webinar_logo_211120232054.png";
             title = movie.getTitle();
             releaseDate = movie.getReleaseDate();
 

@@ -64,7 +64,7 @@ public class BotTemplate {
             message = "Unknown message source!";
         }
 
-        return createButton(message, action, action);
+        return createGreetingButton(message, action, action);
     }
 
     // make a carousel movies

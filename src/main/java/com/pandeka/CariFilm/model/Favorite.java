@@ -3,15 +3,13 @@ package com.pandeka.CariFilm.model;
 public class Favorite {
 
     public String userId;
-    public String displayName;
     public int movieId;
     public String movieTitle;
 
-    public Favorite(String userId, String displayName, int movieId, String movieTitle) {
-        this.userId = userId;
-        this.displayName = displayName;
+    public Favorite(int movieId, String movieTitle, String userId) {
         this.movieId = movieId;
         this.movieTitle = movieTitle;
+        this.userId = userId;
     }
 
     public Favorite() {

@@ -14,9 +14,9 @@ import java.util.Vector;
 public class DaoImpl implements Dao{
 
     private final static String FAVORITE_TABLE = "table_favorite";
-    private final static String SQL_SELECT_ALL = "SELECT user_id, display_name, movie_id, movie_title FROM " + FAVORITE_TABLE;
+    private final static String SQL_SELECT_ALL = "SELECT movie_id, movie_title, user_id FROM " + FAVORITE_TABLE;
     private final static String SQL_SELECT_BY_ID = SQL_SELECT_ALL + " WHERE LOWER(user_id) LIKE LOWER(?);";
-    private final static String SQL_INSERT = "INSERT INTO " + FAVORITE_TABLE + " (user_id, display_name, movie_id, movie_title) VALUES (?, ?, ?, ?);";
+    private final static String SQL_INSERT = "INSERT INTO " + FAVORITE_TABLE + " (movie_id, movie_title, user_id) VALUES (?, ?, ?);";
 
     private JdbcTemplate mJdbc;
 
@@ -25,10 +25,9 @@ public class DaoImpl implements Dao{
         public Favorite extractData(ResultSet rs) throws SQLException, DataAccessException {
             while (rs.next()) {
                 Favorite favorite = new Favorite(
-                        rs.getString("user_id"),
-                        rs.getString("display_name"),
                         rs.getInt("movie_id"),
-                        rs.getString("movie_title")
+                        rs.getString("movie_title"),
+                        rs.getString("user_id")
                 );
                 return favorite;
             }
@@ -45,10 +44,9 @@ public class DaoImpl implements Dao{
 
             while (rs.next()) {
                 Favorite favorite = new Favorite(
-                        rs.getString("user_id"),
-                        rs.getString("display_name"),
                         rs.getInt("movie_id"),
-                        rs.getString("movie_title")
+                        rs.getString("movie_title"),
+                        rs.getString("user_id")
                 );
 
                 favorites.add(favorite);

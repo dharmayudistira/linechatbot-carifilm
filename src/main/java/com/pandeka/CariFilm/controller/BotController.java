@@ -205,10 +205,25 @@ public class BotController {
         int movieId = Integer.parseInt(id.toString().trim());
 
         if (sender != null) { // check whether sender is null or not
-            if (dbService.addToFavorite(movieId, movieTitle, sender.getUserId()) != 0) { // if insert data is success
-                botService.replyText(replyToken, "Bot izy berhasil menambahkan " + movieTitle + " kedalam daftar favorite anda!");
+
+            List<Favorite> favorites = dbService.getFavorite(sender.getUserId());
+
+            boolean isFavorite = false;
+
+            for (Favorite favorite : favorites) {
+                if (favorite.movieId == movieId) { // check if the movie already added or not
+                    isFavorite = true;
+                }
+            }
+
+            if (isFavorite) {
+                botService.replyText(replyToken, "Sepertinya film " + movieTitle + " sudah ada di daftar favorite kamu :)");
             }else {
-                botService.replyText(replyToken, "Huhu :( mohon maaf rupanya Bot izy belum bisa menambahkan " + movieTitle + " kedalam daftar favorite anda");
+                if (dbService.addToFavorite(movieId, movieTitle, sender.getUserId()) != 0) { // if insert data is success
+                    botService.replyText(replyToken, "Bot izy berhasil menambahkan " + movieTitle + " kedalam daftar favorite anda!");
+                }else {
+                    botService.replyText(replyToken, "Huhu :( mohon maaf rupanya Bot izy belum bisa menambahkan " + movieTitle + " kedalam daftar favorite anda");
+                }
             }
         }
     }

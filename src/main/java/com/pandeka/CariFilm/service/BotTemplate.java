@@ -75,7 +75,7 @@ public class BotTemplate {
 
         CarouselColumn column;
         List<CarouselColumn> carouselColumns = new ArrayList<>();
-        for (int i = 0; i < 5; i++) { // looping untill the first 5 item
+        for (int i = 0; i < 10; i++) { // looping untill the first 10 item
             Movie movie = movies.getResults().get(i);
 
             id = movie.getId();

@@ -71,19 +71,21 @@ public class BotTemplate {
     // make a carousel movies
     public TemplateMessage carouselMovies(Movies movies) {
         String image, title, releaseDate;
+        int id;
 
         CarouselColumn column;
         List<CarouselColumn> carouselColumns = new ArrayList<>();
         for (int i = 0; i < 5; i++) { // looping untill the first 5 item
             Movie movie = movies.getResults().get(i);
 
+            id = movie.getId();
             image = "https://image.tmdb.org/t/p/w780" + movie.getBackdropPath();
             title = movie.getTitle();
             releaseDate = "Release: " + movie.getReleaseDate();
 
             column = new CarouselColumn(image, title, releaseDate,
                     Collections.singletonList(
-                            new MessageAction("Add to favorite", "Menambahkan " + title + " kedalam daftar favorite anda")
+                            new MessageAction("Tambahkan ke Favorite", "Menambahkan \"" + title + "\" kedalam daftar favorite anda. [" + id + "]")
                     )
             );
 

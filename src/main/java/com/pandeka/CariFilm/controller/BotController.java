@@ -135,14 +135,55 @@ public class BotController {
 
     private void handleTextMessage(String replyToken, TextMessageContent content, Source source) {
         if (source instanceof GroupSource) { // check if it's from a group chat
-
+            handleGroupChat(replyToken, content.getText(), ((GroupSource) source).getGroupId());
         } else if (source instanceof RoomSource) { // check if it's from a room chat
-
+            handleRoomChat(replyToken, content.getText(), ((RoomSource) source).getRoomId());
         } else if (source instanceof UserSource) { // check if it's from a personal chat
             handlePersonalChat(replyToken, content.getText());
         } else {
             botService.replyText(replyToken, "Mohon maaf terjadi kesalahan!");
         }
+    }
+
+    private void handleRoomChat(String replyToken, String textMessage, String roomId) {
+        String action = textMessage.toLowerCase();
+
+        if (action.contains("bot leave")) {
+            if (sender == null) {
+                botService.replyText(replyToken, "Hi, untuk memulai perintah tambahkan Bot izy sebagai teman dulu ya :)");
+            }else {
+                botService.leaveRoom(roomId);
+            }
+        }else if (action.contains("lihat daftar film")) { //check if it's from "Lihat Daftar Film" feature
+            showCarouselMovies(replyToken, "Daftar film yang tayang hari ini!");
+        } else if (action.contains("lihat favorite")) { //check if it's from "Lihat Favorite" feature
+            showListFavorite(replyToken, new UserSource(sender.getUserId()));
+        } else if (action.contains("menambahkan")) { //check if it's from "Tambahkan ke Favorite" feature
+            addFavoriteMovie(replyToken, textMessage);
+        }else { // bot can't understand user message, so reply it with guide information
+            handleFallbackMessage(replyToken, new RoomSource(roomId, sender.getUserId()));
+        }
+    }
+
+    private void handleGroupChat(String replyToken, String text, String groupId) {
+        String action = text.toLowerCase();
+
+        if (action.contains("bot leave")) {
+            if (sender == null) {
+                botService.replyText(replyToken, "Hi, untuk memulai perintah tambahkan Bot izy sebagai teman dulu ya :)");
+            }else {
+                botService.leaveGroup(groupId);
+            }
+        }else if (action.contains("lihat daftar film")) { //check if it's from "Lihat Daftar Film" feature
+            showCarouselMovies(replyToken, "Daftar film yang tayang hari ini!");
+        } else if (action.contains("lihat favorite")) { //check if it's from "Lihat Favorite" feature
+            showListFavorite(replyToken, new UserSource(sender.getUserId()));
+        } else if (action.contains("menambahkan")) { //check if it's from "Tambahkan ke Favorite" feature
+            addFavoriteMovie(replyToken, text);
+        }else { // bot can't understand user message, so reply it with guide information
+            handleFallbackMessage(replyToken, new GroupSource(groupId, sender.getUserId()));
+        }
+
     }
 
     private void handlePersonalChat(String replyToken, String textMessage) {
@@ -230,6 +271,7 @@ public class BotController {
 
     private void handleFallbackMessage(String replyToken, Source source) {
         String unknownCommandMessage = "Hi " + sender.getDisplayName() + ", mohon maaf bot izy tidak mengerti maksud kamu. Silahkan ikuti petunjuk ya :)";
+
         greetingMessage(replyToken, source, unknownCommandMessage);
     }
 

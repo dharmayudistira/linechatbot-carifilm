@@ -176,8 +176,7 @@ public class BotController {
             botService.replyText(replyToken, replyText);
 
         }else {
-            botService.replyText(replyToken, "Hmmm rupanya Bot izy tidak bisa menemukan film kesukaanmu, yukk daftarkan film kesukaanmu sekarang :D");
-            showCarouselMovies(replyToken, null);
+            showCarouselMovies(replyToken, "Hmmm rupanya Bot izy tidak bisa menemukan film kesukaanmu, yukk daftarkan film kesukaanmu sekarang :D");
         }
 
     }

@@ -152,7 +152,7 @@ public class BotController {
             showCarouselMovies(replyToken, "Daftar film yang tayang hari ini!");
         } else if (action.contains("lihat favorite")) { //check if it's from "Lihat Favorite" feature
             showListFavorite(replyToken, new UserSource(sender.getUserId()));
-        } else if (action.contains("tambahkan ke favorite")) { //check if it's from "Tambahkan ke Favorite" feature
+        } else if (action.contains("add to favorite")) { //check if it's from "Tambahkan ke Favorite" feature
             addFavoriteMovie(replyToken, textMessage);
         }else { // bot can't understand user message, so reply it with guide information
             handleFallbackMessage(replyToken, new UserSource(sender.getUserId()));

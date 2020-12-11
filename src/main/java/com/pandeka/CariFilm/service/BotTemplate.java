@@ -85,7 +85,7 @@ public class BotTemplate {
 
             column = new CarouselColumn(image, title, releaseDate,
                     Collections.singletonList(
-                            new MessageAction("Tambahkan ke Favorite", "Menambahkan \"" + title + "\" kedalam daftar favorite anda. [" + id + "]")
+                            new MessageAction("Add to Favorite", "Menambahkan \"" + title + "\" kedalam daftar favorite anda. [" + id + "]")
                     )
             );
 

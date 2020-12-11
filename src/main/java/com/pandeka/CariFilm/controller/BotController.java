@@ -149,8 +149,7 @@ public class BotController {
         String action = textMessage.toLowerCase();
 
         if (action.contains("lihat daftar film")) { //check if it's from "Lihat Daftar Film" feature
-            botService.replyText(replyToken, "Daftar film yang tayang hari ini!");
-            showCarouselMovies(replyToken, null);
+            showCarouselMovies(replyToken, "Daftar film yang tayang hari ini!");
         } else if (action.contains("lihat favorite")) { //check if it's from "Lihat Favorite" feature
             showListFavorite(replyToken, new UserSource(sender.getUserId()));
         } else if (action.contains("tambahkan ke favorite")) { //check if it's from "Tambahkan ke Favorite" feature

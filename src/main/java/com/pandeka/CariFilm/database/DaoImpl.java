@@ -68,8 +68,8 @@ public class DaoImpl implements Dao{
     }
 
     @Override
-    public int addToFavorite(String userId, String displayName, int movieId, String movieTitle) {
-        return mJdbc.update(SQL_INSERT, new Object[]{userId, displayName, movieId, movieTitle});
+    public int addToFavorite(int movieId, String movieTitle, String userId) {
+        return mJdbc.update(SQL_INSERT, new Object[]{movieId, movieTitle, userId});
     }
 
 }

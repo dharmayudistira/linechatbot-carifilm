@@ -14,8 +14,8 @@ public class DBService {
     private Dao mDao;
 
     // add movie into user favorite list
-    public int addToFavorite(String userId, String displayName, int movieId, String movieTitle) {
-        return mDao.addToFavorite(userId, displayName, movieId, movieTitle);
+    public int addToFavorite(int movieId, String movieTitle, String userId) {
+        return mDao.addToFavorite(movieId, movieTitle, userId);
     }
 
     public List<Favorite> getFavorite(String userId) {

@@ -7,6 +7,6 @@ import java.util.List;
 public interface Dao {
 
     public List<Favorite> getFavoriteById(String userId);
-    public int addToFavorite(String userId, String displayName, int movieId, String movieTitle);
+    public int addToFavorite(int movieId, String movieTitle, String userId);
 
 }
